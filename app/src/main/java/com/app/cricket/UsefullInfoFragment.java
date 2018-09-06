@@ -15,7 +15,7 @@ import Data.ScoreData;
 public class UsefullInfoFragment extends Fragment
 {
     public UsefullInfoFragment(){}
-    ScoreData dScoreData=new ScoreData();
+    
     TextView firstBatsman,secondBatsman,firstBowler,SecondBowler;
     TextView firstRuns,secondRuns,firstBalls,secondBalls,firstFours,secondFours,firstSixers,secondSixers,firstSr,secondSr;
     TextView firstOver,secondOver,firstOverRuns,secondOverRuns,firstMaiden,secondMaiden,firstWicket,secondWicket,firstEco,secondEco;
@@ -25,10 +25,8 @@ public class UsefullInfoFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_usefull_info, container, false);
 
-        try {
-
-            insert();
-
+        try
+        {
             firstBatsman=rootView.findViewById(R.id.first_bat);
             firstRuns=rootView.findViewById(R.id.first_run);
             firstBalls=rootView.findViewById(R.id.first_ball);
@@ -65,66 +63,74 @@ public class UsefullInfoFragment extends Fragment
         return rootView;
     }
 
-    public void insert()
+    public static void insert()
     {
-        dScoreData.addData("batsman_one","S Dhawan* (lhb)");
-        dScoreData.addData("batsman_second","KS Williamson (rhb)");
+        CricketAppManager.GetInstance().addData("batsman_one","S Dhawan* (lhb)");
+        CricketAppManager.GetInstance().addData("batsman_second","KS Williamson (rhb)");
 
-        dScoreData.addData("R1","26");
-        dScoreData.addData("B1","17");
-        dScoreData.addData("4s1","4");
-        dScoreData.addData("6s1","1");
-        dScoreData.addData("SR1","152.94");
+        CricketAppManager.GetInstance().addData("R1","26");
+        CricketAppManager.GetInstance().addData("B1","17");
+        CricketAppManager.GetInstance().addData("4s1","4");
+        CricketAppManager.GetInstance().addData("6s1","1");
+        CricketAppManager.GetInstance().addData("SR1","152.94");
 
-        dScoreData.addData("R2","12");
-        dScoreData.addData("B2","8");
-        dScoreData.addData("4s2","1");
-        dScoreData.addData("6s2","1");
-        dScoreData.addData("SR2","150.00");
+        CricketAppManager.GetInstance().addData("R2","12");
+        CricketAppManager.GetInstance().addData("B2","8");
+        CricketAppManager.GetInstance().addData("4s2","1");
+        CricketAppManager.GetInstance().addData("6s2","1");
+        CricketAppManager.GetInstance().addData("SR2","150.00");
 
-        dScoreData.addData("bowler_one","K Gowtham (ob)");
-        dScoreData.addData("bowler_second","JD Unadkat (lm)");
+        CricketAppManager.GetInstance().addData("bowler_one","K Gowtham (ob)");
+        CricketAppManager.GetInstance().addData("bowler_second","JD Unadkat (lm)");
 
-        dScoreData.addData("O1","1");
-        dScoreData.addData("M1","0");
-        dScoreData.addData("Run1","9");
-        dScoreData.addData("W1","0");
-        dScoreData.addData("Econ1","9.00");
+        CricketAppManager.GetInstance().addData("O1","1");
+        CricketAppManager.GetInstance().addData("M1","0");
+        CricketAppManager.GetInstance().addData("Run1","9");
+        CricketAppManager.GetInstance().addData("W1","0");
+        CricketAppManager.GetInstance().addData("Econ1","9.00");
 
-        dScoreData.addData("O2","2");
-        dScoreData.addData("M2","0");
-        dScoreData.addData("Run2","22");
-        dScoreData.addData("W2","1");
-        dScoreData.addData("Econ2","11.00");
+        CricketAppManager.GetInstance().addData("O2","2");
+        CricketAppManager.GetInstance().addData("M2","0");
+        CricketAppManager.GetInstance().addData("Run2","22");
+        CricketAppManager.GetInstance().addData("W2","1");
+        CricketAppManager.GetInstance().addData("Econ2","11.00");
+
+        CricketAppManager.GetInstance().addData("live","4th Match(N),Indian Premier League at Hyderabad, Apr 9 2018");
+        CricketAppManager.GetInstance().addData("team1","RR");
+        CricketAppManager.GetInstance().addData("team2","SRH");
+        CricketAppManager.GetInstance().addData("target","125/9");
+        CricketAppManager.GetInstance().addData("current","45/1* (5/20 ovr,tgt 126)");
+        CricketAppManager.GetInstance().addData("status","Sunrisers Hyderabad requires another 81 runs with 9 wickets and 15.0 overs remaining");
+
     }
     public void Set()
     {
-        firstBatsman.setText(dScoreData.getData("batsman_one"));
-        firstRuns.setText(dScoreData.getData("R1"));
-        firstBalls.setText(dScoreData.getData("B1"));
-        firstFours.setText(dScoreData.getData("4s1"));
-        firstSixers.setText(dScoreData.getData("6s1"));
-        firstSr.setText(dScoreData.getData("SR1"));
+        firstBatsman.setText( CricketAppManager.GetInstance().getData("batsman_one"));
+        firstRuns.setText( CricketAppManager.GetInstance().getData("R1"));
+        firstBalls.setText( CricketAppManager.GetInstance().getData("B1"));
+        firstFours.setText( CricketAppManager.GetInstance().getData("4s1"));
+        firstSixers.setText( CricketAppManager.GetInstance().getData("6s1"));
+        firstSr.setText( CricketAppManager.GetInstance().getData("SR1"));
 
-        secondBatsman.setText(dScoreData.getData("batsman_second"));
-        secondRuns.setText(dScoreData.getData("R2"));
-        secondBalls.setText(dScoreData.getData("B2"));
-        secondFours.setText(dScoreData.getData("4s2"));
-        secondSixers.setText(dScoreData.getData("6s2"));
-        secondSr.setText(dScoreData.getData("SR2"));
+        secondBatsman.setText( CricketAppManager.GetInstance().getData("batsman_second"));
+        secondRuns.setText( CricketAppManager.GetInstance().getData("R2"));
+        secondBalls.setText( CricketAppManager.GetInstance().getData("B2"));
+        secondFours.setText( CricketAppManager.GetInstance().getData("4s2"));
+        secondSixers.setText( CricketAppManager.GetInstance().getData("6s2"));
+        secondSr.setText( CricketAppManager.GetInstance().getData("SR2"));
 
-        firstBowler.setText(dScoreData.getData("bowler_one"));
-        firstOver.setText(dScoreData.getData("O1"));
-        firstMaiden.setText(dScoreData.getData("M1"));
-        firstOverRuns.setText(dScoreData.getData("Run1"));
-        firstWicket.setText(dScoreData.getData("W1"));
-        firstEco.setText(dScoreData.getData("Econ1"));
+        firstBowler.setText( CricketAppManager.GetInstance().getData("bowler_one"));
+        firstOver.setText( CricketAppManager.GetInstance().getData("O1"));
+        firstMaiden.setText( CricketAppManager.GetInstance().getData("M1"));
+        firstOverRuns.setText( CricketAppManager.GetInstance().getData("Run1"));
+        firstWicket.setText( CricketAppManager.GetInstance().getData("W1"));
+        firstEco.setText( CricketAppManager.GetInstance().getData("Econ1"));
 
-        SecondBowler.setText(dScoreData.getData("bowler_second"));
-        secondOver.setText(dScoreData.getData("O2"));
-        secondMaiden.setText(dScoreData.getData("M2"));
-        secondOverRuns.setText(dScoreData.getData("Run2"));
-        secondWicket.setText(dScoreData.getData("W2"));
-        secondEco.setText(dScoreData.getData("Econ2"));
+        SecondBowler.setText( CricketAppManager.GetInstance().getData("bowler_second"));
+        secondOver.setText( CricketAppManager.GetInstance().getData("O2"));
+        secondMaiden.setText( CricketAppManager.GetInstance().getData("M2"));
+        secondOverRuns.setText( CricketAppManager.GetInstance().getData("Run2"));
+        secondWicket.setText( CricketAppManager.GetInstance().getData("W2"));
+        secondEco.setText( CricketAppManager.GetInstance().getData("Econ2"));
     }
 }

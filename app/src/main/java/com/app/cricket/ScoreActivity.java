@@ -31,20 +31,14 @@ public class ScoreActivity extends FragmentActivity
         currentRun=(TextView)findViewById(R.id.runs_second);
         currentStatus=(TextView)findViewById(R.id.current_status);
         try {
-            MatchData dMatchData=new MatchData();
-            dMatchData.addMatch("live","4th Match(N),Indian Premier League at Hyderabad, Apr 9 2018");
-            dMatchData.addMatch("team1","RR");
-            dMatchData.addMatch("team2","SRH");
-            dMatchData.addMatch("target","125/9");
-            dMatchData.addMatch("current","45/1* (5/20 ovr,tgt 126)");
-            dMatchData.addMatch("status","Sunrisers Hyderabad requires another 81 runs with 9 wickets and 15.0 overs remaining");
 
-            liveDescription.setText(dMatchData.getMatch("live"));
-            firstTeam.setText(dMatchData.getMatch("team1"));
-            secondTeam.setText(dMatchData.getMatch("team2"));
-            targetRun.setText(dMatchData.getMatch("target"));
-            currentRun.setText(dMatchData.getMatch("current"));
-            currentStatus.setText(dMatchData.getMatch("status"));
+            UsefullInfoFragment.insert();
+            liveDescription.setText(CricketAppManager.GetInstance().getData("live"));
+            firstTeam.setText(CricketAppManager.GetInstance().getData("team1"));
+            secondTeam.setText(CricketAppManager.GetInstance().getData("team2"));
+            targetRun.setText(CricketAppManager.GetInstance().getData("target"));
+            currentRun.setText(CricketAppManager.GetInstance().getData("current"));
+            currentStatus.setText(CricketAppManager.GetInstance().getData("status"));
 
             ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
             setupViewPager(viewPager);
