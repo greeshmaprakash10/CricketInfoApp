@@ -13,16 +13,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Data.MatchData;
-import Data.ScoreData;
+import Data.ScoreUIBase;
 
-public class ScoreActivity extends FragmentActivity
+public class ScoreActivity extends FragmentActivity implements ScoreUIBase
 {
     TextView liveDescription,firstTeam,secondTeam,targetRun,currentRun,currentStatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        CricketAppManager.GetInstance().addUI(this);
 
         liveDescription=(TextView)findViewById(R.id.live_status);
         firstTeam=(TextView)findViewById(R.id.team1);
@@ -31,14 +31,9 @@ public class ScoreActivity extends FragmentActivity
         currentRun=(TextView)findViewById(R.id.runs_second);
         currentStatus=(TextView)findViewById(R.id.current_status);
         try {
-
-            UsefullInfoFragment.insert();
-            liveDescription.setText(CricketAppManager.GetInstance().getData("live"));
-            firstTeam.setText(CricketAppManager.GetInstance().getData("team1"));
-            secondTeam.setText(CricketAppManager.GetInstance().getData("team2"));
-            targetRun.setText(CricketAppManager.GetInstance().getData("target"));
-            currentRun.setText(CricketAppManager.GetInstance().getData("current"));
-            currentStatus.setText(CricketAppManager.GetInstance().getData("status"));
+            CricketAppManager.GetInstance().clear();                // Clearing Hashmap
+            UsefullInfoFragment.insert();                           // Inserting new Values
+            refresh();                                              // Refreshing Ui
 
             ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
             setupViewPager(viewPager);
@@ -52,6 +47,17 @@ public class ScoreActivity extends FragmentActivity
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void refresh() {
+        liveDescription.setText(CricketAppManager.GetInstance().getData("live"));
+        firstTeam.setText(CricketAppManager.GetInstance().getData("team1"));
+        secondTeam.setText(CricketAppManager.GetInstance().getData("team2"));
+        targetRun.setText(CricketAppManager.GetInstance().getData("target"));
+        currentRun.setText(CricketAppManager.GetInstance().getData("current"));
+        currentStatus.setText(CricketAppManager.GetInstance().getData("status"));
+    }
+
     class PagerAdapter extends FragmentPagerAdapter
     {
 

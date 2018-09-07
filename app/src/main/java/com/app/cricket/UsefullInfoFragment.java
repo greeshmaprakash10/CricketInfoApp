@@ -11,8 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import Data.ScoreData;
+import Data.ScoreUIBase;
 
-public class UsefullInfoFragment extends Fragment
+public class UsefullInfoFragment extends Fragment implements ScoreUIBase
 {
     public UsefullInfoFragment(){}
     
@@ -24,6 +25,7 @@ public class UsefullInfoFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_usefull_info, container, false);
+        CricketAppManager.GetInstance().addUI(this);
 
         try
         {
@@ -55,7 +57,8 @@ public class UsefullInfoFragment extends Fragment
             secondWicket=rootView.findViewById(R.id.second_wicket);
             secondEco=rootView.findViewById(R.id.second_econ);
 
-            Set();
+            //CricketAppManager.GetInstance().clear();
+            refresh();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,7 +106,9 @@ public class UsefullInfoFragment extends Fragment
         CricketAppManager.GetInstance().addData("status","Sunrisers Hyderabad requires another 81 runs with 9 wickets and 15.0 overs remaining");
 
     }
-    public void Set()
+
+    @Override
+    public void refresh()
     {
         firstBatsman.setText( CricketAppManager.GetInstance().getData("batsman_one"));
         firstRuns.setText( CricketAppManager.GetInstance().getData("R1"));
