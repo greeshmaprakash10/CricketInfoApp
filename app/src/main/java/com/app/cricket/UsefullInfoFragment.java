@@ -25,6 +25,7 @@ public class UsefullInfoFragment extends Fragment implements ScoreUIBase
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_usefull_info, container, false);
+
         CricketAppManager.GetInstance().addUI(this);
 
         try

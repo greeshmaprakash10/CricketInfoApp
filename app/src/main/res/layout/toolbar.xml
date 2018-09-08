@@ -6,33 +6,40 @@
     android:layout_width="match_parent"
     android:minHeight="65dp"
     android:background="#eeeeef">
-    <RelativeLayout
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/left"
+            android:layout_weight="3"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SRH Vs RR"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="15sp"
-            android:layout_centerInParent="true"/>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/left"/>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="45dp"
-            android:src="@drawable/notify_bell"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/level_up"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
+            android:textSize="17sp"
+            android:layout_weight="2.5"
+            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="5">
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:src="@drawable/notify_bell"
+                android:layout_gravity="end"/>
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:src="@drawable/level_up"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </android.support.v7.widget.Toolbar>

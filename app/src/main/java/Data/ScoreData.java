@@ -16,7 +16,7 @@ public class ScoreData
         value=(String)mScoreData.get(name);
         return value;
     }
-    public void clear()
+    public void clear()                         //  to clear Hashmap
     {
         mScoreData.clear();
     }

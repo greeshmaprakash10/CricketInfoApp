@@ -1,5 +1,7 @@
 package com.app.cricket;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,7 +10,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +24,27 @@ import Data.ScoreUIBase;
 public class ScoreActivity extends FragmentActivity implements ScoreUIBase
 {
     TextView liveDescription,firstTeam,secondTeam,targetRun,currentRun,currentStatus;
+    Toolbar maintoolbar;
+    Context mContext;
+    @SuppressLint({"NewApi", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        mContext=getApplicationContext();
+
+        ImageView imageView=(ImageView)findViewById(R.id.toolbar_refresh);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CricketAppManager.GetInstance().clear();                // Clearing Hashmap
+                insert1();
+                CricketAppManager.GetInstance().refresh();
+            }
+        });
+
+
+
         CricketAppManager.GetInstance().addUI(this);
 
         liveDescription=(TextView)findViewById(R.id.live_status);
@@ -31,7 +54,6 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
         currentRun=(TextView)findViewById(R.id.runs_second);
         currentStatus=(TextView)findViewById(R.id.current_status);
         try {
-            CricketAppManager.GetInstance().clear();                // Clearing Hashmap
             UsefullInfoFragment.insert();                           // Inserting new Values
             refresh();                                              // Refreshing Ui
 
@@ -94,6 +116,46 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
         adapter.addFragment(new UsefullInfoFragment(),"Report");
         adapter.addFragment(new UsefullInfoFragment(),"Commentary");
         viewPager.setAdapter(adapter);
+    }
+    public static void insert1()
+    {
+        CricketAppManager.GetInstance().addData("batsman_one","G Gambhir* (lhb)");
+        CricketAppManager.GetInstance().addData("batsman_second","Shreyas Iyer (rhb)");
+
+        CricketAppManager.GetInstance().addData("R1","30");
+        CricketAppManager.GetInstance().addData("B1","17");
+        CricketAppManager.GetInstance().addData("4s1","4");
+        CricketAppManager.GetInstance().addData("6s1","1");
+        CricketAppManager.GetInstance().addData("SR1","152.94");
+
+        CricketAppManager.GetInstance().addData("R2","20");
+        CricketAppManager.GetInstance().addData("B2","8");
+        CricketAppManager.GetInstance().addData("4s2","1");
+        CricketAppManager.GetInstance().addData("6s2","1");
+        CricketAppManager.GetInstance().addData("SR2","150.00");
+
+        CricketAppManager.GetInstance().addData("bowler_one","K Jadhav (ob)");
+        CricketAppManager.GetInstance().addData("bowler_second","S Thakur (lm)");
+
+        CricketAppManager.GetInstance().addData("O1","2");
+        CricketAppManager.GetInstance().addData("M1","0");
+        CricketAppManager.GetInstance().addData("Run1","9");
+        CricketAppManager.GetInstance().addData("W1","0");
+        CricketAppManager.GetInstance().addData("Econ1","9.00");
+
+        CricketAppManager.GetInstance().addData("O2","3");
+        CricketAppManager.GetInstance().addData("M2","0");
+        CricketAppManager.GetInstance().addData("Run2","20");
+        CricketAppManager.GetInstance().addData("W2","1");
+        CricketAppManager.GetInstance().addData("Econ2","11.00");
+
+        CricketAppManager.GetInstance().addData("live","4th Match(N),Indian Premier League at Hyderabad, Apr 9 2018");
+        CricketAppManager.GetInstance().addData("team1","DD");
+        CricketAppManager.GetInstance().addData("team2","CSK");
+        CricketAppManager.GetInstance().addData("target","130/9");
+        CricketAppManager.GetInstance().addData("current","50/1* (6/20 ovr,tgt 131)");
+        CricketAppManager.GetInstance().addData("status","Delhi Dare Devils requires another 81 runs with 9 wickets and 14.0 overs remaining");
+
     }
 
 
