@@ -1,7 +1,10 @@
 package Data;
 
+import android.annotation.SuppressLint;
+
+import com.app.cricket.CricketAppManager;
+
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class ScoreData
 {
@@ -19,6 +22,12 @@ public class ScoreData
     public void clear()                         //  to clear Hashmap
     {
         mScoreData.clear();
+    }
+    @SuppressLint("NewApi")
+    public void updateScore(String keyValue, String value)
+    {
+        mScoreData.remove(keyValue);
+        mScoreData.put(keyValue, value);
     }
 
     private HashMap<String,String> mScoreData = new HashMap<String,String>();

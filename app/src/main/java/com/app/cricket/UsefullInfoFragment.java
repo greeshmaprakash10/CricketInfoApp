@@ -102,7 +102,7 @@ public class UsefullInfoFragment extends Fragment implements ScoreUIBase
         CricketAppManager.GetInstance().addData("live","4th Match(N),Indian Premier League at Hyderabad, Apr 9 2018");
         CricketAppManager.GetInstance().addData("team1","RR");
         CricketAppManager.GetInstance().addData("team2","SRH");
-        CricketAppManager.GetInstance().addData("target","125/9");
+        CricketAppManager.GetInstance().addData("target","125");
         CricketAppManager.GetInstance().addData("current","45/1* (5/20 ovr,tgt 126)");
         CricketAppManager.GetInstance().addData("status","Sunrisers Hyderabad requires another 81 runs with 9 wickets and 15.0 overs remaining");
 
