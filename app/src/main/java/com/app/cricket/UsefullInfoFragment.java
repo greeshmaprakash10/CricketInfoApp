@@ -69,74 +69,74 @@ public class UsefullInfoFragment extends Fragment implements ScoreUIBase
 
     public static void insert()
     {
-        CricketAppManager.GetInstance().addData("batsman_one","S Dhawan* (lhb)");
-        CricketAppManager.GetInstance().addData("batsman_second","KS Williamson (rhb)");
+        CricketAppManager.GetInstance().addData("name_one","S Dhawan* (lhb)");
+        CricketAppManager.GetInstance().addData("name_two","KS Williamson (rhb)");
 
-        CricketAppManager.GetInstance().addData("R1","26");
-        CricketAppManager.GetInstance().addData("B1","17");
-        CricketAppManager.GetInstance().addData("4s1","4");
-        CricketAppManager.GetInstance().addData("6s1","1");
-        CricketAppManager.GetInstance().addData("SR1","152.94");
+        CricketAppManager.GetInstance().addData("runs_one","26");
+        CricketAppManager.GetInstance().addData("balls_one","17");
+        CricketAppManager.GetInstance().addData("4s_one","4");
+        CricketAppManager.GetInstance().addData("6s_one","1");
+        CricketAppManager.GetInstance().addData("strikerate_one","152.94");
 
-        CricketAppManager.GetInstance().addData("R2","12");
-        CricketAppManager.GetInstance().addData("B2","8");
-        CricketAppManager.GetInstance().addData("4s2","1");
-        CricketAppManager.GetInstance().addData("6s2","1");
-        CricketAppManager.GetInstance().addData("SR2","150.00");
+        CricketAppManager.GetInstance().addData("runs_two","12");
+        CricketAppManager.GetInstance().addData("balls_two","8");
+        CricketAppManager.GetInstance().addData("4s_two","1");
+        CricketAppManager.GetInstance().addData("6s_two","1");
+        CricketAppManager.GetInstance().addData("strikerate_two","150.00");
 
-        CricketAppManager.GetInstance().addData("bowler_one","K Gowtham (ob)");
-        CricketAppManager.GetInstance().addData("bowler_second","JD Unadkat (lm)");
+        CricketAppManager.GetInstance().addData("name1","K Gowtham (ob)");
+        CricketAppManager.GetInstance().addData("name2","JD Unadkat (lm)");
 
-        CricketAppManager.GetInstance().addData("O1","1");
-        CricketAppManager.GetInstance().addData("M1","0");
-        CricketAppManager.GetInstance().addData("Run1","9");
-        CricketAppManager.GetInstance().addData("W1","0");
-        CricketAppManager.GetInstance().addData("Econ1","9.00");
+        CricketAppManager.GetInstance().addData("over1","1");
+        CricketAppManager.GetInstance().addData("maiden1","0");
+        CricketAppManager.GetInstance().addData("runs1","9");
+        CricketAppManager.GetInstance().addData("wicket1","0");
+        CricketAppManager.GetInstance().addData("economy1","9.00");
 
-        CricketAppManager.GetInstance().addData("O2","2");
-        CricketAppManager.GetInstance().addData("M2","0");
-        CricketAppManager.GetInstance().addData("Run2","22");
-        CricketAppManager.GetInstance().addData("W2","1");
-        CricketAppManager.GetInstance().addData("Econ2","11.00");
+        CricketAppManager.GetInstance().addData("over2","2");
+        CricketAppManager.GetInstance().addData("maiden2","0");
+        CricketAppManager.GetInstance().addData("runs2","22");
+        CricketAppManager.GetInstance().addData("wicket2","1");
+        CricketAppManager.GetInstance().addData("economy2","11.00");
 
-        CricketAppManager.GetInstance().addData("live","4th Match(N),Indian Premier League at Hyderabad, Apr 9 2018");
-        CricketAppManager.GetInstance().addData("team1","RR");
-        CricketAppManager.GetInstance().addData("team2","SRH");
-        CricketAppManager.GetInstance().addData("target","125");
-        CricketAppManager.GetInstance().addData("current","45/1* (5/20 ovr,tgt 126)");
-        CricketAppManager.GetInstance().addData("status","Sunrisers Hyderabad requires another 81 runs with 9 wickets and 15.0 overs remaining");
+        CricketAppManager.GetInstance().addData("match_description","4th Match(N),Indian Premier League at Hyderabad, Apr 9 2018");
+        CricketAppManager.GetInstance().addData("team_one","RR");
+        CricketAppManager.GetInstance().addData("team_two","SRH");
+        CricketAppManager.GetInstance().addData("target_run","125");
+        CricketAppManager.GetInstance().addData("current_run","45/1* (5/20 ovr,tgt 126)");
+        CricketAppManager.GetInstance().addData("match_status","Sunrisers Hyderabad requires another 81 runs with 9 wickets and 15.0 overs remaining");
 
     }
 
     @Override
     public void refresh()
     {
-        firstBatsman.setText( CricketAppManager.GetInstance().getData("batsman_one"));
-        firstRuns.setText( CricketAppManager.GetInstance().getData("R1"));
-        firstBalls.setText( CricketAppManager.GetInstance().getData("B1"));
-        firstFours.setText( CricketAppManager.GetInstance().getData("4s1"));
-        firstSixers.setText( CricketAppManager.GetInstance().getData("6s1"));
-        firstSr.setText( CricketAppManager.GetInstance().getData("SR1"));
+        firstBatsman.setText( CricketAppManager.GetInstance().getData("name_one"));
+        firstRuns.setText( CricketAppManager.GetInstance().getData("runs_one"));
+        firstBalls.setText( CricketAppManager.GetInstance().getData("balls_one"));
+        firstFours.setText( CricketAppManager.GetInstance().getData("4s_one"));
+        firstSixers.setText( CricketAppManager.GetInstance().getData("6s_one"));
+        firstSr.setText( CricketAppManager.GetInstance().getData("strikerate_one"));
 
-        secondBatsman.setText( CricketAppManager.GetInstance().getData("batsman_second"));
-        secondRuns.setText( CricketAppManager.GetInstance().getData("R2"));
-        secondBalls.setText( CricketAppManager.GetInstance().getData("B2"));
-        secondFours.setText( CricketAppManager.GetInstance().getData("4s2"));
-        secondSixers.setText( CricketAppManager.GetInstance().getData("6s2"));
-        secondSr.setText( CricketAppManager.GetInstance().getData("SR2"));
+        secondBatsman.setText( CricketAppManager.GetInstance().getData("name_two"));
+        secondRuns.setText( CricketAppManager.GetInstance().getData("runs_two"));
+        secondBalls.setText( CricketAppManager.GetInstance().getData("balls_two"));
+        secondFours.setText( CricketAppManager.GetInstance().getData("4s_two"));
+        secondSixers.setText( CricketAppManager.GetInstance().getData("6s_two"));
+        secondSr.setText( CricketAppManager.GetInstance().getData("strikerate_two"));
 
-        firstBowler.setText( CricketAppManager.GetInstance().getData("bowler_one"));
-        firstOver.setText( CricketAppManager.GetInstance().getData("O1"));
-        firstMaiden.setText( CricketAppManager.GetInstance().getData("M1"));
-        firstOverRuns.setText( CricketAppManager.GetInstance().getData("Run1"));
-        firstWicket.setText( CricketAppManager.GetInstance().getData("W1"));
-        firstEco.setText( CricketAppManager.GetInstance().getData("Econ1"));
+        firstBowler.setText( CricketAppManager.GetInstance().getData("name1"));
+        firstOver.setText( CricketAppManager.GetInstance().getData("over1"));
+        firstMaiden.setText( CricketAppManager.GetInstance().getData("maiden1"));
+        firstOverRuns.setText( CricketAppManager.GetInstance().getData("runs1"));
+        firstWicket.setText( CricketAppManager.GetInstance().getData("wicket1"));
+        firstEco.setText( CricketAppManager.GetInstance().getData("economy1"));
 
-        SecondBowler.setText( CricketAppManager.GetInstance().getData("bowler_second"));
-        secondOver.setText( CricketAppManager.GetInstance().getData("O2"));
-        secondMaiden.setText( CricketAppManager.GetInstance().getData("M2"));
-        secondOverRuns.setText( CricketAppManager.GetInstance().getData("Run2"));
-        secondWicket.setText( CricketAppManager.GetInstance().getData("W2"));
-        secondEco.setText( CricketAppManager.GetInstance().getData("Econ2"));
+        SecondBowler.setText( CricketAppManager.GetInstance().getData("name2"));
+        secondOver.setText( CricketAppManager.GetInstance().getData("over2"));
+        secondMaiden.setText( CricketAppManager.GetInstance().getData("maiden2"));
+        secondOverRuns.setText( CricketAppManager.GetInstance().getData("runs2"));
+        secondWicket.setText( CricketAppManager.GetInstance().getData("wicket2"));
+        secondEco.setText( CricketAppManager.GetInstance().getData("economy2"));
     }
 }

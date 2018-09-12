@@ -1,7 +1,10 @@
 package com.app.cricket;
 
+import android.content.Context;
+
 import java.util.HashMap;
 
+import Data.DownloadManager;
 import Data.ScoreData;
 import Data.ScoreUIBase;
 import Data.UIManager;
@@ -32,7 +35,10 @@ public class CricketAppManager
 
     public void clear(){mScoreData.clear();}
 
+    public void download(String Url,Context context){mDownload.download(Url,context);}
+
     private ScoreData mScoreData = new ScoreData();
     private UIManager mUIManger = new UIManager();
+    private DownloadManager mDownload=new DownloadManager();
 
 }
