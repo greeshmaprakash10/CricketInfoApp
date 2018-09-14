@@ -3,7 +3,6 @@ package com.app.cricket;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,18 +11,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import Data.DownloadManager;
+import Data.ScoreCardData;
 import Data.ScoreData;
 import Data.ScoreUIBase;
 
@@ -31,9 +26,11 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
 {
     TextView liveDescription,firstTeam,secondTeam,targetRun,currentRun,currentStatus;
     String url="https://api.myjson.com/bins/krp00";
+    String Url="https://api.myjson.com/bins/lhwo8";
     Context mContext;
     Handler handler;
     ImageView imageView;
+    public static List<ScoreCardData> scoreModels;
     @SuppressLint({"NewApi", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,8 +52,9 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
         currentRun=(TextView)findViewById(R.id.runs_second);
         currentStatus=(TextView)findViewById(R.id.current_status);
         try {
-            UsefullInfoFragment.insert();                           // Inserting new Values
+            LiveFragment.insert();                           // Inserting new Values
             handler.post(updateView);
+            CricketAppManager.GetInstance().downloadScoreCard(Url,mContext);
             CricketAppManager.GetInstance().refresh();
 
             ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -82,6 +80,7 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
                 if(DownloadManager.mDownload.equals(ScoreData.mScoreData)){}
                 else
                 {
+                    CricketAppManager.GetInstance().clear();
                     ScoreData.mScoreData.putAll(DownloadManager.mDownload);
                     CricketAppManager.GetInstance().refresh();
                 }
@@ -132,10 +131,10 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
 
     private void setupViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new UsefullInfoFragment(),"Live");
-        adapter.addFragment(new ScoreFragment(),"ScoreCard");
-        adapter.addFragment(new UsefullInfoFragment(),"Report");
-        adapter.addFragment(new UsefullInfoFragment(),"Commentary");
+        adapter.addFragment(new LiveFragment(),"Live");
+        adapter.addFragment(new ScoreCardFragment(),"ScoreCard");
+        adapter.addFragment(new LiveFragment(),"Report");
+        adapter.addFragment(new LiveFragment(),"Commentary");
         viewPager.setAdapter(adapter);
     }
     public static void insert1()

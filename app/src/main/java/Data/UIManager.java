@@ -2,7 +2,8 @@ package Data;
 
 import java.util.Vector;
 
-public class UIManager {
+public class UIManager
+{
     public void refresh()
     {
         for (int i = 0; i < mUIObjs.size(); i++)

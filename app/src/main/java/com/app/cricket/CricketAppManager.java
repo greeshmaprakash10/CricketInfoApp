@@ -36,6 +36,7 @@ public class CricketAppManager
     public void clear(){mScoreData.clear();}
 
     public void download(String Url,Context context){mDownload.download(Url,context);}
+    public void downloadScoreCard(String Url,Context context){mDownload.downloadScoreCard(Url,context);}
 
     private ScoreData mScoreData = new ScoreData();
     private UIManager mUIManger = new UIManager();
