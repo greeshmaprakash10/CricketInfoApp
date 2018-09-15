@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -17,6 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:padding="4dp"
                 android:weightSum="5">
                 <TextView
                     android:id="@+id/score_card_team"
@@ -44,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="2dp"
+                android:padding="4sp"
                 android:weightSum="5">
                 <TextView
                     android:layout_width="wrap_content"
@@ -99,7 +103,95 @@
                     android:textColor="@android:color/black"/>
             </LinearLayout>
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview_scorecard"
+                android:id="@+id/recyclerview_batsman"
+                android:background="#ffffff"
+                android:layout_margin="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:weightSum="3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Fall of Wicket"
+                    android:layout_weight=".1"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:id="@+id/score_card_fallofwicket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fall of Wicket"
+                    android:padding="4dp"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp"
+                android:padding="4sp"
+                android:weightSum="5">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Bowling"
+                    android:layout_weight="2.5"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Overs"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Maiden"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Runs"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Wicket"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="ECO"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_bowlers"
                 android:background="#ffffff"
                 android:layout_margin="4dp"
                 android:layout_width="match_parent"

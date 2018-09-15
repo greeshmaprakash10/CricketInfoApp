@@ -12,40 +12,78 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
-
-import Adapter.ScoreCardAdapter;
-import Data.DownloadManager;
-import Data.ScoreCardData;
+import Adapter.ScoreCardBatsmanAdapter;
+import Adapter.ScoreCardBowlerAdapter;
 import Data.ScoreUIBase;
 
 public class ScoreCardFragment extends Fragment implements ScoreUIBase
 {
-    RecyclerView recyclerView;
+    RecyclerView recyclerView1,recyclerView2;
     Context mContext;
-    public ScoreCardFragment(){}
-
+    TextView team,total,fallWickets;
+    ScoreCardBatsmanAdapter adapter;
+    ScoreCardBowlerAdapter bowlerAdapter;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
         View rootView = inflater.inflate(R.layout.fragment_score_card, container, false);
-        recyclerView=(RecyclerView)rootView.findViewById(R.id.recyclerview_scorecard);
+        recyclerView1=(RecyclerView)rootView.findViewById(R.id.recyclerview_batsman);
+        recyclerView2=(RecyclerView)rootView.findViewById(R.id.recyclerview_bowlers);
+        team=(TextView)rootView.findViewById(R.id.score_card_team);
+        total=(TextView)rootView.findViewById(R.id.score_card_total);
+        fallWickets=(TextView)rootView.findViewById(R.id.score_card_fallofwicket);
+
         mContext=getContext();
         try
         {
-            ScoreCardAdapter adapter=new ScoreCardAdapter(mContext,ScoreActivity.scoreModels);
-            LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL,false);
-            recyclerView.setNestedScrollingEnabled(true);
-            recyclerView.setLayoutManager(mLayoutManager);
-            recyclerView.setAdapter(adapter);
+            team.setText(ScoreActivity.scoreModels.get(0).getTeam_bat());
+            total.setText(ScoreActivity.scoreModels.get(0).getTotal());
+            fallWickets.setText(ScoreActivity.scoreModels.get(0).getFall_five()+","+ScoreActivity.scoreModels.get(0).getFall_four()+
+            ","+ScoreActivity.scoreModels.get(0).getFall_three()+","+ScoreActivity.scoreModels.get(0).getFall_two()+","+
+                    ScoreActivity.scoreModels.get(0).getFall_one());
+
+            if(ScoreActivity.scoreModels!=null)
+            {
+                adapter=new ScoreCardBatsmanAdapter(mContext,ScoreActivity.scoreModels.get(0).getBatsmanList());
+                LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL,false);
+                recyclerView1.setNestedScrollingEnabled(true);
+                recyclerView1.setLayoutManager(mLayoutManager);
+                recyclerView1.setAdapter(adapter);
+
+                bowlerAdapter=new ScoreCardBowlerAdapter(mContext,ScoreActivity.scoreModels.get(0).getBowlerList());
+                LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL,false);
+                recyclerView2.setNestedScrollingEnabled(true);
+                recyclerView2.setLayoutManager(layoutManager);
+                recyclerView2.setAdapter(bowlerAdapter);
+
+
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return rootView;
     }
     @Override
-    public void refresh() {
+    public void refresh()
+    {
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            if(ScoreActivity.scoreModels.size()>0)
+            adapter.updateValues(ScoreActivity.scoreModels.get(0).getBatsmanList());
+            bowlerAdapter.updateValues(ScoreActivity.scoreModels.get(0).getBowlerList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

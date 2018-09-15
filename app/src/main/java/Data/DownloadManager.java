@@ -8,6 +8,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.app.cricket.CricketAppManager;
 import com.app.cricket.ScoreActivity;
 import com.app.cricket.ScoreCardFragment;
 import com.google.gson.Gson;
@@ -121,6 +122,12 @@ public class DownloadManager
                         {
                             Gson gson = new Gson();
                             ScoreActivity.scoreModels= gson.fromJson(jsonArray.toString(),new TypeToken<ArrayList<ScoreCardData>>(){}.getType());
+                            try {
+                                ScoreActivity temp=new ScoreActivity();
+                                temp.update();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         } catch (JsonSyntaxException e) {
                             e.printStackTrace();
                         }

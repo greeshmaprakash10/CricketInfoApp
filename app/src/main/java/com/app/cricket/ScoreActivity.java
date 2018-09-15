@@ -26,7 +26,7 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
 {
     TextView liveDescription,firstTeam,secondTeam,targetRun,currentRun,currentStatus;
     String url="https://api.myjson.com/bins/krp00";
-    String Url="https://api.myjson.com/bins/lhwo8";
+    String Url="https://api.myjson.com/bins/f7ct4";
     Context mContext;
     Handler handler;
     ImageView imageView;
@@ -38,9 +38,6 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
         mContext=getApplicationContext();
-
-
-
         handler = new Handler();
         imageView=(ImageView)findViewById(R.id.toolbar_refresh);
         CricketAppManager.GetInstance().addUI(this);
@@ -52,9 +49,10 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
         currentRun=(TextView)findViewById(R.id.runs_second);
         currentStatus=(TextView)findViewById(R.id.current_status);
         try {
-            LiveFragment.insert();                           // Inserting new Values
-            handler.post(updateView);
             CricketAppManager.GetInstance().downloadScoreCard(Url,mContext);
+            CricketAppManager.GetInstance().refresh();
+            LiveFragment.insert();
+            handler.post(updateView);
             CricketAppManager.GetInstance().refresh();
 
             ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -80,7 +78,7 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
                 if(DownloadManager.mDownload.equals(ScoreData.mScoreData)){}
                 else
                 {
-                    CricketAppManager.GetInstance().clear();
+                    //CricketAppManager.GetInstance().clear();
                     ScoreData.mScoreData.putAll(DownloadManager.mDownload);
                     CricketAppManager.GetInstance().refresh();
                 }
@@ -129,8 +127,9 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
         }
     }
 
+    PagerAdapter adapter;
     private void setupViewPager(ViewPager viewPager) {
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
+        adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new LiveFragment(),"Live");
         adapter.addFragment(new ScoreCardFragment(),"ScoreCard");
         adapter.addFragment(new LiveFragment(),"Report");
@@ -176,5 +175,14 @@ public class ScoreActivity extends FragmentActivity implements ScoreUIBase
         CricketAppManager.GetInstance().addData("current_run","50/1* (6/20 ovr,tgt 131)");
         CricketAppManager.GetInstance().addData("match_status","Delhi Dare Devils requires another 81 runs with 9 wickets and 14.0 overs remaining");
 
+    }
+    public void update()
+    {
+        try {
+           adapter.mFragmentList.get(1).onResume();
+           adapter.notifyDataSetChanged();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
