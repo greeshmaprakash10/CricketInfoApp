@@ -1,9 +1,5 @@
 package Data;
 
-import android.annotation.SuppressLint;
-
-import com.app.cricket.CricketAppManager;
-
 import java.util.HashMap;
 
 public class ScoreData

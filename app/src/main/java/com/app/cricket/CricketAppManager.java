@@ -34,6 +34,7 @@ public class CricketAppManager
     public void addUI(ScoreUIBase ui){ mUIManger.addUI(ui); }
 
     public void clear(){mScoreData.clear();}
+    public boolean isReady(){return mDownload.isReady();}
 
     public void download(String Url,Context context){mDownload.download(Url,context);}
     public void downloadScoreCard(String Url,Context context){mDownload.downloadScoreCard(Url,context);}

@@ -38,7 +38,7 @@ public class ScoreCardFragment extends Fragment implements ScoreUIBase
         try
         {
             team.setText(ScoreActivity.scoreModels.get(0).getTeam_bat());
-            total.setText(ScoreActivity.scoreModels.get(0).getTotal());
+            total.setText(ScoreActivity.scoreModels.get(0).getTarget_run());
             fallWickets.setText(ScoreActivity.scoreModels.get(0).getFall_five()+","+ScoreActivity.scoreModels.get(0).getFall_four()+
             ","+ScoreActivity.scoreModels.get(0).getFall_three()+","+ScoreActivity.scoreModels.get(0).getFall_two()+","+
                     ScoreActivity.scoreModels.get(0).getFall_one());
